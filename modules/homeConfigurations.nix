@@ -1,8 +1,9 @@
+{ system }:
 { inputs, config, ... }:
 {
   config = {
     flake.homeConfigurations.${config.my.machineName} = inputs.home-manager.lib.homeManagerConfiguration {
-      pkgs = import inputs.nixpkgs { system = "aarch64-linux"; };
+      pkgs = import inputs.nixpkgs { inherit system; };
       modules = [
         ./../user.nix
         ./base.nix

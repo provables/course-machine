@@ -11,12 +11,15 @@
     inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } (
       { config, ... }: {
+        debug = true;
         imports = [
           inputs.home-manager.flakeModules.home-manager
-          ./modules/homeConfigurations.nix
+          (flake-parts.lib.importApply
+            ./modules/homeConfigurations.nix
+            { inherit (config.my) system; }
+          )
           ./user.nix
         ];
-        systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
         flake.machineName = config.my.machineName;
       }
     );

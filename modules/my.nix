@@ -1,6 +1,11 @@
 {lib, ...}:
 {
   options = {
+    my.system = lib.mkOption {
+      type = lib.types.str;
+      default = "x86_64-linux";
+      description = "Machine system to configure";
+    };
     my.name = lib.mkOption {
       type = lib.types.str;
       default = "John Smith";
