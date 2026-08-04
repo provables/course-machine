@@ -11,6 +11,7 @@
         ./git.nix
         ./zsh.nix
         ./vim.nix
+        ./python.nix
       ];
     };
   };

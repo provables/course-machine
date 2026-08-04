@@ -1,4 +1,7 @@
 { pkgs, ... }: {
+  home.packages = [
+    pkgs.zsh-syntax-highlighting
+  ];
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
@@ -8,7 +11,7 @@
   };
   programs.zsh = {
     enable = true;
-    autosuggestion.enable = true;
+    autosuggestion.enable = false;
     syntaxHighlighting.enable = false;
     plugins = [
       {

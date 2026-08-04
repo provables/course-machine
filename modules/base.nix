@@ -3,6 +3,7 @@
     pkg-config
     openssl
     fzf
+    glibcLocalesUtf8
   ];
   home.username = config.my.username;
   home.homeDirectory = config.my.home;
