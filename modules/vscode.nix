@@ -1,14 +1,8 @@
 { lib, pkgs, config, ... }:
 let
-  vscodeTargetPlatforms = {
-    x86_64-linux = "linux-x64";
-    aarch64-linux = "linux-arm64";
-  };
-  user = config.my.username;
-  targetPlatform = vscodeTargetPlatforms.${config.my.system};
   settings = pkgs.runCommand "settings.json" { } ''
     substitute ${./../files/settings.json} $out \
-      --subst-var-by user ${user}\
+      --subst-var-by user ${config.my.username}\
       --subst-var-by zsh ${config.programs.zsh.package}
   '';
   extensionsId = [
