@@ -1,0 +1,14 @@
+{
+    "editor.formatOnSave": true,
+    "lean4.alwaysAskBeforeInstallingLeanVersions": true,
+    "terminal.integrated.profiles.linux": {
+        "zsh": {
+            "path": "@zsh@"
+        }
+    },
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "python.analysis.typeCheckingMode": "standard",
+    "lean4.envPathExtensions": [
+        "/home/@user@/.nix-profile/bin"
+    ]
+}
