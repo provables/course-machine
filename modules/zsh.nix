@@ -38,10 +38,4 @@
   programs.bat.enable = true;
   programs.less.enable = true;
   programs.lesspipe.enable = true;
-
-  home.activation = {
-    ensureZshActivation = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      $DRY_RUN_CMD /usr/bin/sudo ${pkgs.util-linux}/bin/chsh -s ${config.programs.zsh.package}/bin/zsh ${config.my.username}
-    '';
-  };
 }
