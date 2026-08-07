@@ -16,7 +16,7 @@ The requirements for the machine are:
 - Run the following:
   ```shell
   nix build
-  sudo ./result/bin/setup
+  sudo ./result/bin/setup-machine
   ```
   (Note: `sudo` is necessary to change the shell of the user. The previous commands
   can be run as root or as any other user that has `sudo` privileges. The configuration
