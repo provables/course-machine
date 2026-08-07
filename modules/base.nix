@@ -6,7 +6,7 @@ let
       [[ "$(id -u)" -ne "0" ]] && printf "Please, run as root\n" && exit 1
       # shellcheck disable=SC2016
       /usr/bin/su -c \
-        '${pkgs.nix}/bin/nix run home-manager/master switch -- -b backup --flake path:$(pwd)#${config.my.machineName}' \
+        '${pkgs.home-manager}/bin/home-manager switch -b backup --flake path:$(pwd)#${config.my.machineName}' \
         ${config.my.username}
       /usr/bin/chsh -s ${config.programs.zsh.package}/bin/zsh ${config.my.username}
     '';
@@ -26,6 +26,7 @@ in
       openssl
       fzf
       glibcLocalesUtf8
+      home-manager
     ];
     home.username = config.my.username;
     home.homeDirectory = config.my.home;
