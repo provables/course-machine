@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
-    (python314.withPackages (p: [
+    (python313.withPackages (p: [
       p.jupyter
       p.requests
       p.pandas
