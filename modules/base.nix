@@ -29,7 +29,7 @@ let
       cp user.nix "$TEMP"
       git stash
       git stash drop
-      git pull 
+      git pull origin main
       cp "$TEMP"/user.nix .
     '';
   };
