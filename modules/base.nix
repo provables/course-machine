@@ -27,10 +27,12 @@ let
       cd "$HOME"/.course-machine
       TEMP="$(mktemp -d)"
       cp user.nix "$TEMP"
-      git stash
-      git stash drop
+      git stash || true
+      git stash drop || true
       git pull origin main
       cp "$TEMP"/user.nix .
+      ${pkgs.home-manager}/bin/home-manager switch \
+        -b backup --flake "path:$(pwd)#${config.my.machineName}"
     '';
   };
 in
