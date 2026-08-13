@@ -1,5 +1,5 @@
 { system }:
-{ inputs, config, ... }:
+{ inputs, config, moduleWithSystem, ... }:
 let
   cfg = inputs.home-manager.lib.homeManagerConfiguration {
     pkgs = import inputs.nixpkgs {
@@ -8,6 +8,14 @@ let
     };
     modules = [
       ./../user.nix
+      (
+        moduleWithSystem (
+          { config, ...}:
+          {
+            _module.args.shell-utils = config.shell-utils;
+          }
+        )
+      )
       ./base.nix
       ./lean.nix
       ./git.nix

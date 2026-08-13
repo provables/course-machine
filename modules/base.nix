@@ -1,4 +1,4 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, config, shell-utils, ... }:
 let
   installSelfUpdate = pkgs.writeShellApplication {
     name = "install-self-update";
@@ -10,19 +10,24 @@ let
   };
   setupMachineCmd = pkgs.writeShellApplication {
     name = "setup-machine";
+    runtimeInputs = with pkgs; [
+      shell-utils.display
+      gum
+    ];
     text = ''
-      [[ "$(id -u)" -ne "0" ]] && printf "Please, run as root\n" && exit 1
-      # shellcheck disable=SC2016
-      /usr/bin/su -c \
-        'env PATH=$HOME/.nix-profile/bin:$PATH ${pkgs.home-manager}/bin/home-manager switch -b backup --flake path:$(pwd)#${config.my.machineName}' \
-        ${config.my.username}
-      /usr/bin/chsh -s ${config.programs.zsh.package}/bin/zsh ${config.my.username}
-      /usr/bin/su -c '${installSelfUpdate}/bin/install-self-update' ${config.my.username}
+      [[ "$(id -u)" -eq "0" ]] && printf "Please, run as a regular user with sudo access" && exit 1
+      sudo /usr/bin/chsh -s ${config.programs.zsh.package}/bin/zsh ${config.my.username} 
+      sudo su -c '${installSelfUpdate}/bin/install-self-update' ${config.my.username}
+      ${selfUpdateCmd}/bin/self-update
     '';
   };
   selfUpdateCmd = pkgs.writeShellApplication {
     name = "self-update";
-    runtimeInputs = [ pkgs.coreutils pkgs.git ];
+    runtimeInputs = with pkgs; [
+      coreutils
+      git
+      home-manager
+    ];
     text = ''
       cd "$HOME"/.course-machine
       TEMP="$(mktemp -d)"
@@ -31,13 +36,13 @@ let
       git stash drop || true
       git pull origin main
       cp "$TEMP"/user.nix .
-      ${pkgs.home-manager}/bin/home-manager switch \
+      home-manager switch \
         -b backup --flake "path:$(pwd)#${config.my.machineName}"
     '';
   };
 in
 {
-  options = { 
+  options = {
     setupMachine = lib.mkOption {
       type = lib.types.package;
       default = setupMachineCmd;
