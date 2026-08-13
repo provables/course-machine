@@ -18,17 +18,29 @@ curl -L https://nixos.org/nix/install | sh -s -- --no-daemon
 curl https://gist.githubusercontent.com/waltermoreira/d37daa2c915817e8eccf600fc9299a56/raw/enable-flakes.sh | sh -s
 ```
 
-## Running the tool
+## Installing the tool
 
 - Clone this repository locally.
 - Edit the file `user.nix` to the desired values.
 - Run the following:
   ```bash
-  nix build
-  sudo ./result/bin/setup-machine
+  nix run
   ```
-  (Note: `sudo` is necessary to change the shell of the user. The previous commands
-  can be run as root or as any other user that has `sudo` privileges. The configuration
-  will be created for the unprivileged user defined in the file `user.nix`, who 
-  **will not** need `sudo` access.)
+  *Note*: if the values in `user.nix` in the Git repository are correct for a machine,
+  then one can simply run the following, without the need for cloning the repository:
+  ```bash
+  nix run github:provables/course-machine
+  ```
 
+## Updating the machine
+
+The installation in the previous step provides a command `self-update`. Running this
+command pulls the most recent version of the flake from Github and updates the system.
+
+```
+self-update
+```
+
+*Note*: this command runs automatically at installation time. A script or ansible
+role **only** needs to perform the installation. The user is meant to run `self-update`
+if necessary.

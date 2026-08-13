@@ -15,9 +15,8 @@ let
       gum
     ];
     text = ''
-      [[ "$(id -u)" -eq "0" ]] && printf "Please, run as a regular user with sudo access" && exit 1
       sudo /usr/bin/chsh -s ${config.programs.zsh.package}/bin/zsh ${config.my.username} 
-      sudo su -c '${installSelfUpdate}/bin/install-self-update' ${config.my.username}
+      ${installSelfUpdate}/bin/install-self-update
       ${selfUpdateCmd}/bin/self-update
     '';
   };
@@ -55,6 +54,7 @@ in
       openssl
       fzf
       glibcLocalesUtf8
+      iconv
       home-manager
       installSelfUpdate
       selfUpdateCmd
