@@ -30,11 +30,11 @@ let
     text = ''
       cd "$HOME"/.course-machine
       TEMP="$(mktemp -d)"
-      cp user.nix "$TEMP"
+      cp {user,extraPackages,extraPythonPackages}.nix "$TEMP"
       git stash || true
       git stash drop || true
       git pull origin main
-      cp "$TEMP"/user.nix .
+      cp "$TEMP"/{user,extraPackages,extraPythonPackages}.nix .
       home-manager switch \
         -b backup --flake "path:$(pwd)#${config.my.machineName}"
     '';
