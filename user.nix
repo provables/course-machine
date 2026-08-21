@@ -1,6 +1,5 @@
 { ... }:
 {
-  # baz bar
   imports = [ ./modules/my.nix ];
   config = {
     my.system = "aarch64-linux";

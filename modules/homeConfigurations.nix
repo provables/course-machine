@@ -8,6 +8,8 @@ let
     };
     modules = [
       ./../user.nix
+      ./../extraPythonPackages.nix
+      ./../extraPackages.nix
       (
         moduleWithSystem (
           { config, ...}:

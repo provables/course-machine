@@ -47,6 +47,11 @@ in
       default = setupMachineCmd;
       description = "Command for setting up the machine";
     };
+    course.extraPackages = lib.mkOption {
+      type = with lib.types; listOf package;
+      default = [];
+      description = "List of extra packages from Nixpkgs";
+    };
   };
   config = {
     home.packages = with pkgs; [
@@ -58,7 +63,7 @@ in
       home-manager
       installSelfUpdate
       selfUpdateCmd
-    ];
+    ] ++ config.course.extraPackages;
     home.username = config.my.username;
     home.homeDirectory = config.my.home;
     home.stateVersion = "25.11";
