@@ -2,11 +2,11 @@
 {
   imports = [ ./modules/my.nix ];
   config = {
-    my.system = "aarch64-linux";
-    my.name = "Walter Moreira";
-    my.username = "wmoreira";
-    my.email = "wmoreira@tacc.utexas.edu";
-    my.home = "/home/wmoreira";
-    my.machineName = "ubuntu2";
+    my.system = "x86_64-linux";
+    my.name = "Generic User";
+    my.username = "ubuntu";
+    my.email = "ubuntu@example.org";
+    my.home = "/home/ubuntu";
+    my.machineName = "ubuntu";
   };
 }
