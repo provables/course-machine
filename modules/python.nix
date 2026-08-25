@@ -19,6 +19,7 @@
         p.matplotlib
         p.tensorflow
         p.keras
+        p.ipykernel
       ] ++ (config.course.extraPythonPackages p)))
       black
     ];

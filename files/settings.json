@@ -10,5 +10,6 @@
     "python.analysis.typeCheckingMode": "standard",
     "lean4.envPathExtensions": [
         "/home/@user@/.nix-profile/bin"
-    ]
+    ],
+    "python.defaultInterpreterPath": "/home/@user@/.nix-profile/bin/python"
 }
