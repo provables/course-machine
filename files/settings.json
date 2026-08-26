@@ -11,5 +11,9 @@
     "lean4.envPathExtensions": [
         "/home/@user@/.nix-profile/bin"
     ],
-    "python.defaultInterpreterPath": "/home/@user@/.nix-profile/bin/python"
+    "python.defaultInterpreterPath": "/home/@user@/.nix-profile/bin/python",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true
+    }
 }
