@@ -15,5 +15,12 @@
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter",
         "editor.formatOnSave": true
-    }
+    },
+    "jupyter.kernels.excludePythonEnvironments": [
+        "/usr/bin/python3",
+        "/bin/python3"
+    ],
+    "python-envs.globalSearchPaths": [
+        "/home/@user@/.nix-profile/bin"
+    ]
 }
