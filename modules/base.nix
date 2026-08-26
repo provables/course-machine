@@ -29,6 +29,7 @@ let
       home-manager
     ];
     text = ''
+      rm -rf "$HOME"/course-machine || true
       cd "$HOME"/.course-machine
       TEMP="$(mktemp -d)"
       cp {user,extraPackages,extraPythonPackages}.nix "$TEMP"
