@@ -15,7 +15,8 @@ let
       gum
     ];
     text = ''
-      sudo /usr/bin/chsh -s ${config.programs.zsh.package}/bin/zsh ${config.my.username} 
+      sudo /usr/sbin/sss_override user-add ${config.my.username} --shell ${config.programs.zsh.package}/bin/zsh
+      sudo /usr/bin/systemctl restart sssd
       ${installSelfUpdate}/bin/install-self-update
       ${selfUpdateCmd}/bin/self-update
     '';
