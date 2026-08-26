@@ -14,7 +14,7 @@ let
     "ms-python.debugpy"
     "ms-python.vscode-python-envs"
     "ms-toolsai.jupyter"
-    # "donjayamanne.vscode-default-python-kernel"
+    "donjayamanne.vscode-default-python-kernel"
   ];
   extensionsCmds = builtins.concatStringsSep "\n"
     (builtins.map
