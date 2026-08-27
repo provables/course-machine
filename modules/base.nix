@@ -65,7 +65,7 @@ in
       home-manager
       installSelfUpdate
       selfUpdateCmd
-      nix.nix-cli
+      #nix.nix-cli
     ] ++ config.course.extraPackages;
     home.username = config.my.username;
     home.homeDirectory = config.my.home;
