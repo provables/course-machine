@@ -22,6 +22,7 @@
         p.ipykernel
         p.transformers
         p.seaborn
+        p.torch
       ] ++ (config.course.extraPythonPackages p)))
       black
     ];
