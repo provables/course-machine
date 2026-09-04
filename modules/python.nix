@@ -20,6 +20,8 @@
         p.tensorflow
         p.keras
         p.ipykernel
+        p.transformers
+        p.seaborn
       ] ++ (config.course.extraPythonPackages p)))
       black
     ];
