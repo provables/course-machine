@@ -23,6 +23,8 @@
         p.transformers
         p.seaborn
         p.torch
+        p.sentencepiece
+        p.sacremoses
       ] ++ (config.course.extraPythonPackages p)))
       black
     ];
