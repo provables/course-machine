@@ -25,6 +25,7 @@
         p.torch
         p.sentencepiece
         p.sacremoses
+        p.pillow
       ] ++ (config.course.extraPythonPackages p)))
       black
     ];
