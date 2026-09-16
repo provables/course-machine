@@ -26,6 +26,7 @@
         p.sentencepiece
         p.sacremoses
         p.pillow
+        p.openai
       ] ++ (config.course.extraPythonPackages p)))
       black
     ];
